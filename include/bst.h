@@ -7,7 +7,7 @@ template <typename T>
 class BST {
  private:
   struct Node {
-    T work;
+    T word;
     int count;
     Node* left, * right;
   };
@@ -23,16 +23,16 @@ class BST {
 
 
 template<class T>
-typename BST<T>::Node* BST<T>::addNodeTree(Node* root, const T& work_) {
+typename BST<T>::Node* BST<T>::addNodeTree(Node* root, const T& word_) {
   if (root == nullptr) {
     root = new Node;
-    root->v = work_;
+    root->v = word_;
     root->count = 1;
     root->left = root->right = nullptr;
-  } else if (root->work > work_) {
-      root->left = addNodeTree(root->left, work_);
-  } else if (root->work < work_) {
-      root->right = addNodeTree(root->right, work_);
+  } else if (root->word > word_) {
+      root->left = addNodeTree(root->left, word_);
+  } else if (root->word < word_) {
+      root->right = addNodeTree(root->right, word_);
   } else {
       root->count++;
   }
@@ -40,18 +40,18 @@ typename BST<T>::Node* BST<T>::addNodeTree(Node* root, const T& work_) {
 }
 
 template<class T>
-void BST<T>::addNode(const T& work_) {
-  root = addNodeTree(root, work_);
+void BST<T>::addNode(const T& word_) {
+  root = addNodeTree(root, word_);
 }
 
 template<class T>
-int BST<T>::searchNodeTree(Node* root, const T& work_) {
+int BST<T>::searchNodeTree(Node* root, const T& word_) {
   if (root == nullptr) {
     return 0;
-  } else if (root->work > work_) {
-      return searchNodeTree(root->left, work_);
-  } else if (root->work < work_) {
-      return searchNodeTree(root->right, work_);
+  } else if (root->word > word_) {
+      return searchNodeTree(root->left, word_);
+  } else if (root->word < word_) {
+      return searchNodeTree(root->right, word_);
   } else {
     return root->count;
   }
@@ -59,8 +59,8 @@ int BST<T>::searchNodeTree(Node* root, const T& work_) {
 }
 
 template<class T>
-int BST<T>::search(const T& work_) {
-  return searchNodeTree(root, work_);
+int BST<T>::search(const T& word_) {
+  return searchNodeTree(root, word_);
 }
 
 template<class T>
