@@ -13,19 +13,19 @@ BST<std::string> makeTree(const char* filename) {
 
   if (file) {
     while (!file.eof()) {
-      work.erase();
+      word.erase();
       while (1) {
         char sum = file.get();
         if (sum > 96 && sum < 123) {
-          word += symbol;
+          word += sum;
         } else if (sum > 64 && sum < 91) {
             sum += 32;
-            work += sum;
+            word += sum;
         } else {
           break;
         }
       }
-      if (!work.empty()) {
+      if (!word.empty()) {
         tree.addNode(word);
       } else {
         continue;
