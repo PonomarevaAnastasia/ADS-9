@@ -26,7 +26,7 @@ template<class T>
 typename BST<T>::Node* BST<T>::addNodeTree(Node* root, const T& word_) {
   if (root == nullptr) {
     root = new Node;
-    root->v = word_;
+    root->word = word_;
     root->count = 1;
     root->left = root->right = nullptr;
   } else if (root->word > word_) {
